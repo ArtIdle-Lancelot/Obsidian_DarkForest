@@ -1,6 +1,6 @@
 # Dark Forest 🌳 - An Antiquarian Book & Driftwood Theme
 
-An immersive dark theme for Obsidian. It blends the deep green of a dark forest with the warm browns of driftwood and the golden light of aged parchment.
+An immersive dark theme for Obsidian(Note: This theme is designed exclusively for Dark Mode). It blends the deep green of a dark forest with the warm browns of driftwood and the golden light of aged parchment.
 
 ![Theme Screenshot](screenshot.png)
 
@@ -31,7 +31,7 @@ An immersive dark theme for Obsidian. It blends the deep green of a dark forest 
 
 # Dark Forest 🌳 古旧书卷与沉木主题
 
-一个为 Obsidian 打造的沉浸式暗色主题。融合了深林幽绿、沉木暗褐与书卷暖光。
+一个为 Obsidian 打造的沉浸式暗色主题(注意：此主题专为深色模式设计)。融合了深林幽绿、沉木暗褐与书卷暖光。
 
 ## ✨ 主题特色
 
