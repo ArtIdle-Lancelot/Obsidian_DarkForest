@@ -1,0 +1,363 @@
+/* ==========================================================================
+   Dark Forest - 古旧书卷与沉木主题 (最终完美版)
+   ========================================================================== */
+
+/* =========================================
+   1. 核心调色板与全局变量
+   ========================================= */
+body {
+  --file-line-width: 100% !important; 
+  --code-background: #272B24 !important; /* 行内代码背景 */
+  --code-normal: #D8D4C0 !important;     /* 行内代码文字 */
+}
+
+/* 亮色模式调色板 */
+.theme-light {
+  --background-primary: #E6E2D3;          
+  --background-secondary: #DBD6C4;        
+  --text-normal: #3B3A2F;                 
+  --text-accent: #6B7F5A;                 
+  --interactive-accent: #7D9469;
+  --background-modifier-border: #CCC7B5;  
+  --text-selection: rgba(107, 127, 90, 0.2);
+}
+
+/* 暗色模式调色板 */
+.theme-dark {
+  --background-primary: #262A23;          
+  --background-secondary: #1E211A;        
+  --text-normal: #C8C6B5;                 
+  --text-muted: #8E8E7F;
+  --text-accent: #8FA77B;                 
+  --interactive-accent: #7D9469;
+  --background-modifier-border: #383D31;  
+  --text-selection: rgba(143, 167, 123, 0.25);
+}
+
+
+/* =========================================
+   2. 核心组件（代码块、引用、标签、Callout）
+   ========================================= */
+/* 大代码块：纯黑背景 + 深灰边框 + 苔藓绿点缀 */
+.markdown-rendered pre {
+  background-color: #0f0f0f !important; 
+  border: 1px solid #222222 !important; 
+  border-left: 4px solid #6B7F5A !important; 
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.8) !important; 
+}
+
+/* 引用块 */
+.markdown-rendered blockquote {
+  border-left: 4px solid #7D9469 !important;
+  background-color: rgba(180, 170, 140, 0.08) !important; 
+  padding: 10px 15px;
+}
+
+/* 标签 (Tag) */
+.tag {
+  background-color: #5A6B4A !important; 
+  color: #E6E2D3 !important; 
+  border-radius: 3px;
+  font-weight: bold;
+}
+
+/* Callout 提示框 */
+.theme-dark .callout {
+  background-color: rgba(38, 42, 35, 0.8) !important; 
+  border: 1px solid #383D31 !important;
+  border-left: 4px solid #7D9469 !important;
+  box-shadow: 2px 4px 10px rgba(0,0,0,0.3); 
+}
+.theme-dark .callout-title {
+  background-color: rgba(125, 148, 105, 0.1) !important;
+}
+
+
+/* =========================================
+   3. 标题美化（树木生长全家桶 + 响应式折行修复）
+   ========================================= */
+/* H1：树木图标 + 底部绿线（修复长标题折行断线） */
+body .cm-header-1, body .markdown-preview-view h1 {
+  border-bottom: 2px solid #7D9469 !important; 
+  padding-bottom: 6px !important;
+  display: inline-block !important; 
+  width: fit-content !important; 
+  max-width: 100% !important;
+  padding-right: 15px !important; 
+  margin-bottom: 10px !important; 
+}
+body .cm-header-1::before, body .markdown-preview-view h1::before { content: "🌳 " !important; }
+
+/* H2：叶子 */
+body .cm-header-2, body .markdown-preview-view h2 { border-bottom: none !important; }
+body .cm-header-2::before, body .markdown-preview-view h2::before { content: "🌿 " !important; }
+
+/* H3：树枝 */
+body .cm-header-3, body .markdown-preview-view h3 { border-left: none !important; padding-left: 0 !important; }
+body .cm-header-3::before, body .markdown-preview-view h3::before { content: "🪵 " !important; font-size: 0.9em; }
+
+/* H4 - H6 */
+body .cm-header-4::before, body .markdown-preview-view h4::before { content: "🍂 " !important; }
+body .cm-header-5::before, body .markdown-preview-view h5::before { content: "🌱 " !important; }
+body .cm-header-6::before, body .markdown-preview-view h6::before { content: "❖ " !important; font-size: 0.8em; }
+
+
+/* =========================================
+   4. 主体纸张光影（书页居中与模拟装订线）
+   ========================================= */
+.theme-dark .markdown-preview-view,
+.theme-dark .markdown-source-view.mod-cm6 .cm-sizer {
+  background-color: #2C3028 !important;
+  border: 1px solid #4F4236 !important;
+  border-radius: 6px !important; 
+  max-width: 850px !important; 
+  margin: 20px auto !important; 
+  padding: 40px 50px 40px 60px !important; 
+  box-shadow: 
+    inset 25px 0 30px -25px rgba(0,0,0,0.6), 
+    inset 1px 0 0 rgba(255,255,255,0.05),    
+    0 15px 35px rgba(0, 0, 0, 0.4) !important; 
+}
+
+.theme-light .markdown-preview-view,
+.theme-light .markdown-source-view.mod-cm6 .cm-sizer {
+  background-color: #F2EFE6 !important;
+  border: 1px solid #CCC7B5 !important;
+  border-radius: 6px !important;
+  max-width: 850px !important;
+  margin: 20px auto !important;
+  padding: 40px 50px 40px 60px !important;
+  box-shadow: 
+    inset 25px 0 30px -25px rgba(80,60,40,0.25), 
+    0 10px 25px rgba(0, 0, 0, 0.08) !important;
+}
+
+.theme-dark .markdown-source-view.mod-cm6 .cm-scroller,
+.theme-light .markdown-source-view.mod-cm6 .cm-scroller {
+  padding: 15px 25px !important; 
+}
+
+
+/* =========================================
+   5. 左侧书架（全域森林微景观 + 丝滑抽拉动画）
+   ========================================= */
+/* 侧边栏主背景 */
+.theme-dark .workspace-split.mod-left-split {
+  position: relative !important; /* 定位锚点 */
+  background-color: #141613 !important; 
+  border-right: 2px solid #0f0f0f !important; 
+  z-index: 1 !important; /* 确保层级安全 */
+}
+
+/* 底部森林微景观 (绑定在整个左面板上，确保所有视图都有) */
+.theme-dark .workspace-split.mod-left-split::after {
+  content: "";
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 380px; 
+  pointer-events: none; 
+  z-index: -1; /* 放在左侧面板的最底层，绝对不挡任何面板元素和状态栏 */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 300'%3E%3Cg fill='%23D4B895' opacity='0.8'%3E%3Ccircle cx='160' cy='50' r='14'/%3E%3Cpath d='M 160 25 L 160 30 M 160 70 L 160 75 M 135 50 L 140 50 M 180 50 L 185 50 M 142 32 L 146 36 M 174 64 L 178 68 M 142 68 L 146 64 M 174 36 L 178 32' stroke='%23D4B895' stroke-width='2' stroke-linecap='round'/%3E%3C/g%3E%3Cpath d='M 20 80 Q 40 65 60 80 Q 75 70 90 85 L 20 85 Z' fill='%238FA77B' opacity='0.4'/%3E%3Cpath d='M 110 100 Q 130 85 150 100 Q 165 90 180 105 L 110 105 Z' fill='%238FA77B' opacity='0.3'/%3E%3Cpath d='M 0 230 Q 50 170 100 230 Z' fill='%234F4236' opacity='0.5'/%3E%3Cpath d='M 100 230 Q 150 150 200 230 Z' fill='%234F4236' opacity='0.5'/%3E%3Cg fill='%236B7F5A'%3E%3Cpath d='M 80 70 L 105 130 L 90 130 L 115 190 L 95 190 L 125 250 L 35 250 L 65 190 L 45 190 L 70 130 L 55 130 Z'/%3E%3C/g%3E%3Cg fill='%238FA77B'%3E%3Cpath d='M 120 40 L 150 115 L 130 115 L 160 185 L 135 185 L 170 260 L 70 260 L 105 185 L 80 185 L 110 115 L 90 115 Z'/%3E%3C/g%3E%3Cpath d='M 0 250 Q 50 235 100 250 Q 150 235 200 250 L 200 300 L 0 300 Z' fill='%232C241A'/%3E%3C/svg%3E");
+  background-size: contain; 
+  background-position: bottom center; 
+  background-repeat: no-repeat;
+  opacity: 0.95; 
+}
+
+/* 🎯 核心修复：让所有左侧视图的背景透明，透出下方的图案 */
+.theme-dark .workspace-split.mod-left-split .workspace-leaf,
+.theme-dark .workspace-split.mod-left-split .workspace-leaf-content,
+.theme-dark .workspace-split.mod-left-split .view-content,
+.theme-dark .workspace-split.mod-left-split .search-input-container,
+.theme-dark .workspace-split.mod-left-split .nav-header {
+  background-color: transparent !important; 
+  z-index: 1 !important; /* 内容浮在图案上方 */
+}
+
+/* 文件夹（木隔板） */
+.theme-dark .nav-folder-title {
+  background-color: #23261F !important; 
+  border-bottom: 2px solid #111 !important; 
+  border-radius: 4px 4px 0 0;
+  color: #A8B89E !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.05) !important; 
+  font-weight: bold;
+  margin: 4px 8px !important; 
+  transform: none !important; 
+  z-index: 1 !important;
+}
+
+/* 文件夹内部（阴影区） */
+.theme-dark .nav-folder-children {
+  border-left: 2px solid #23261F !important; 
+  background-color: rgba(0, 0, 0, 0.15) !important;
+  padding-left: 4px !important;
+  z-index: 1 !important;
+}
+
+/* 笔记基础状态与动画 */
+.theme-dark .nav-file-title {
+  transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), 
+              background-color 0.2s ease, 
+              box-shadow 0.2s ease !important;
+  transform: translateX(0) !important; 
+  border-left: 3px solid transparent !important; 
+  border-radius: 0 4px 4px 0 !important;
+  margin-right: 8px !important;
+  z-index: 1 !important;
+}
+
+/* 笔记悬停（拉出 4px） */
+.theme-dark .nav-file-title:hover {
+  background-color: #23261F !important;
+  color: #D8D4C0 !important;
+  transform: translateX(4px) !important; 
+}
+
+/* 笔记选中（抽出来 12px） */
+.theme-dark .nav-file-title.is-active {
+  background-color: #2C3028 !important; 
+  color: #E6E2D3 !important;
+  border-left: 4px solid #8FA77B !important; 
+  transform: translateX(12px) !important; 
+  box-shadow: 
+    -5px 5px 10px rgba(0,0,0,0.5), 
+    inset 0 0 10px rgba(0,0,0,0.2) !important; 
+  font-weight: bold;
+  z-index: 10 !important; 
+}
+
+
+/* =========================================
+   6. 关系图谱（萤火虫星野）
+   ========================================= */
+.theme-dark {
+  --graph-line: #3A3127 !important;         
+  --graph-node: #8FA77B !important;         
+  --graph-node-tag: #D4B895 !important;     
+  --graph-node-attachment: #5A6B4A !important; 
+  --graph-node-focused: #E6E2D3 !important; 
+  --graph-text: #C8C6B5 !important;         
+  --graph-node-unresolved: #4F4236 !important; 
+}
+.theme-dark .workspace-leaf-content[data-type="graph"] .view-content {
+  background-color: #1E211A !important; 
+}
+.graph-view.color-text {
+  text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.8) !important;
+}
+
+
+/* =========================================
+   7. 右侧滚动条（藤蔓版）
+   ========================================= */
+::-webkit-scrollbar {
+  width: 14px; 
+  height: 14px;
+}
+::-webkit-scrollbar-track {
+  background-color: #141613 !important; 
+  border-left: 1px solid #2C3028 !important; 
+}
+::-webkit-scrollbar-thumb {
+  background-color: #1E211A !important; 
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 14 40' width='14' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7,0 Q11,5 7,10 T7,20 T7,30 T7,40' stroke='%235A6B4A' stroke-width='2' fill='none'/%3E%3Cpath d='M7,5 Q11,3 11,8 Q9,7 7,5' fill='%238FA77B'/%3E%3Cpath d='M7,15 Q3,13 3,18 Q5,17 7,15' fill='%23A3C48E'/%3E%3Ccircle cx='7' cy='25' r='2' fill='%23D4B895'/%3E%3Cpath d='M7,35 Q11,33 11,38 Q9,37 7,35' fill='%238FA77B'/%3E%3C/svg%3E");
+  background-repeat: repeat-y;
+  background-size: 14px 40px; 
+  border-radius: 7px;
+  border-left: 2px solid #5A6B4A;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #2C3028 !important;
+  border-left: 2px solid #8FA77B;
+  box-shadow: inset 0 0 5px rgba(143, 167, 123, 0.5);
+}
+::-webkit-scrollbar-corner {
+  background-color: transparent !important;
+}
+
+
+/* =========================================
+   8. 表格（融入纸张的斑马纹暗纹）
+   ========================================= */
+.markdown-rendered table {
+  border-collapse: collapse !important;
+  border: 1px solid #3B4235 !important; 
+  border-radius: 4px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important; 
+  background-color: #272B24 !important; 
+  width: 100%;
+  margin: 20px 0 !important;
+}
+.markdown-rendered th {
+  background-color: #32372D !important; 
+  color: #E6DCCB !important; 
+  border-bottom: 2px solid #3B4235 !important; 
+  border-right: 1px solid #3B4235 !important;
+  padding: 12px 15px !important;
+  font-weight: bold;
+}
+.markdown-rendered td {
+  border: 1px solid #32372D !important; 
+  padding: 10px 15px !important;
+  color: #C8C6B5 !important;
+}
+
+/* 奇数行（深色底） */
+.markdown-rendered tbody tr:nth-child(odd) {
+  background-color: #272B24 !important; 
+}
+/* 偶数行（与表头同色） */
+.markdown-rendered tbody tr:nth-child(even) {
+  background-color: #32372D !important; 
+}
+
+/* 表格行悬停 */
+.markdown-rendered tbody tr:hover {
+  background-color: #3B4235 !important; 
+  transition: background-color 0.2s ease;
+}
+.markdown-rendered td pre {
+  margin: 0 !important;
+  background-color: #1E211A !important;
+}
+
+
+/* =========================================
+   9. 附加细节（背景噪点 + 自适应分屏 + 状态栏防遮挡）
+   ========================================= */
+/* 纸张噪点滤镜 */
+.workspace-leaf-content[data-type="markdown"]::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none; 
+  z-index: 10;
+  opacity: 0.04; 
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* 底部状态栏提升层级（防止被泥土遮挡） */
+.theme-dark .status-bar {
+  z-index: 100 !important; 
+  position: relative !important; 
+}
+
+/* 分屏自适应（窗口变窄时） */
+@media (max-width: 1000px) {
+  .theme-dark .markdown-preview-view,
+  .theme-dark .markdown-source-view.mod-cm6 .cm-sizer,
+  .theme-light .markdown-preview-view,
+  .theme-light .markdown-source-view.mod-cm6 .cm-sizer {
+    padding: 30px 20px 30px 25px !important; 
+  }
+  .theme-dark .markdown-preview-view,
+  .theme-dark .markdown-source-view.mod-cm6 .cm-sizer {
+    margin: 10px 10px !important;
+  }
+  .tag {
+    padding: 1px 4px !important;
+    font-size: 0.8em !important;
+  }
+}
+
